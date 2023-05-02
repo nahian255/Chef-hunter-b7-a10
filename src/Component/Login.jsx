@@ -4,7 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { newContext } from '../Contex/Auth';
 
 const Login = () => {
-    const { user, loginUser, loginWithGoogle } = useContext(newContext)
+    const { user, loginUser, loginWithGoogle, loginWithGithub } = useContext(newContext)
     let navigate = useNavigate();
     // console.log(user);
 
@@ -32,6 +32,19 @@ const Login = () => {
     // Sing-in with google...
     const handleGoogleLogin = () => {
         loginWithGoogle()
+            .then((result) => {
+                const user = result.user;
+                console.log(user);
+                navigate("/");
+            }).catch((error) => {
+                const errorMessage = error.message;
+                console.log(errorMessage);
+            });
+    };
+
+    // Sing-in with gitHub...
+    const handleGitHubLogin = () => {
+        loginWithGithub()
             .then((result) => {
                 const user = result.user;
                 console.log(user);
@@ -99,6 +112,7 @@ const Login = () => {
                     </div>
                     <div>
                         <Button
+                            onClick={handleGitHubLogin}
                             className='lg:mx-14'
                             outline={true}
                             gradientDuoTone="purpleToBlue"
