@@ -4,7 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { newContext } from '../Contex/Auth';
 
 const Login = () => {
-    const { user, loginUser } = useContext(newContext)
+    const { user, loginUser, loginWithGoogle } = useContext(newContext)
     let navigate = useNavigate();
     // console.log(user);
 
@@ -13,6 +13,8 @@ const Login = () => {
 
     console.log(email, password);
 
+
+    // Login function.....
     const handleLogin = (event) => {
         event.preventDefault();
         if ((email, password)) {
@@ -26,6 +28,19 @@ const Login = () => {
                 });
         }
     };
+
+    // Sing-in with google...
+    const handleGoogleLogin = () => {
+        loginWithGoogle()
+            .then((result) => {
+                const user = result.user;
+                console.log(user);
+                navigate("/");
+            }).catch((error) => {
+                const errorMessage = error.message;
+                console.log(errorMessage);
+            });
+    }
 
     return (
         <div>
@@ -69,9 +84,30 @@ const Login = () => {
                     <Button
                         onClick={handleLogin}
                     >
-                        Submit
+                        Login
                     </Button>
                 </form>
+                <div className='flex flex-wrap items-center gap-2 lg:mx-96'>
+                    <div>
+                        <Button
+                            onClick={handleGoogleLogin}
+                            outline={true}
+                            gradientDuoTone="purpleToBlue"
+                        >
+                            Google Sing-in
+                        </Button>
+                    </div>
+                    <div>
+                        <Button
+                            className='lg:mx-14'
+                            outline={true}
+                            gradientDuoTone="purpleToBlue"
+                        >
+                            GitHub Sing-in
+                        </Button>
+                    </div>
+
+                </div>
             </div>
         </div>
     );
