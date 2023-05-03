@@ -94,14 +94,7 @@ const Register = () => {
                         required={true}
                     />
                 </div>
-
-                {/* <div className="flex items-center gap-2">
-
-                    <Label htmlFor="remember">
-                        If you not sing in befor please <Link to="/register"
-                            className='text-blue-500'>Register here</Link>
-                    </Label>
-                </div> */}
+                <p>Already have an account? <Link className='text-blue-600' to="/login"> Login</Link> </p>
                 <Button
                     onClick={handleRegistration}
                 >

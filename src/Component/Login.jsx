@@ -8,7 +8,9 @@ const Login = () => {
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+    const [error, setError] = useState('')
 
+    console.log(user);
     const location = useLocation();
     let navigate = useNavigate();
     let from = location.state?.comming?.pathname || "/";
@@ -16,6 +18,7 @@ const Login = () => {
     // Login function.....
     const handleLogin = (event) => {
         event.preventDefault();
+        setError('')
         if ((email, password)) {
             loginUser(email, password)
                 .then((result) => {
@@ -23,7 +26,7 @@ const Login = () => {
                     navigate(from, { replace: true });
                 })
                 .catch((error) => {
-                    console.log(error.message);
+                    setError('email and password not match')
                 });
         }
     };
@@ -90,6 +93,7 @@ const Login = () => {
                                 className='text-blue-500'>Register here</Link>
                         </Label>
                     </div>
+                    <p className='text-xs text-red-600'>{error}</p>
                     <Button
                         onClick={handleLogin}
                     >
@@ -106,6 +110,7 @@ const Login = () => {
                             Google Sing-in
                         </Button>
                     </div>
+
                     <div>
                         <Button
                             onClick={handleGitHubLogin}
