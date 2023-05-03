@@ -1,5 +1,5 @@
 import { Accordion, Button, Rating, Toast } from 'flowbite-react';
-import React from 'react';
+import React, { useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -8,9 +8,10 @@ const ChefRecipes = () => {
     const data = useLoaderData()
     // console.log(data);
     const { name, id, img, body, Likes, recipes, experience, recipe1, recipe1Ingredients, recipe1Method, recipe2, recipe2Ingredients, recipe2Method, recipe3, recipe3Ingredients, recipe3Method } = data;
+    const [isDisable, setIsDisable] = useState(false)
 
     const handelAddFav = (event) => {
-        event.currentTarget.disabled = true;
+        setIsDisable(true)
         console.log('clicked');
         toast("Added your Favorite")
 
@@ -63,6 +64,7 @@ const ChefRecipes = () => {
                                 <div className='my-2'>
                                     <Button
                                         onClick={handelAddFav}
+                                        disabled={isDisable ? true : false}
                                         color="purple">
                                         Add to Favorite
                                     </Button>
@@ -72,6 +74,8 @@ const ChefRecipes = () => {
 
                             </Accordion.Content>
                         </Accordion.Panel>
+
+
                         <Accordion.Panel>
                             <Accordion.Title>
                                 Name of the Recipe <span className='text-2xl font-medium italic text-teal-500'>{recipe2}</span>
@@ -95,7 +99,9 @@ const ChefRecipes = () => {
                                     <Rating.Star filled={false} />
                                 </Rating>
                                 <div className='my-2'>
-                                    <Button color="purple">
+                                    <Button
+                                        onClick={handelAddFav}
+                                        color="purple">
                                         Add to Favorite
                                     </Button>
                                 </div>
@@ -125,7 +131,7 @@ const ChefRecipes = () => {
                                 </Rating>
                                 <div className='my-2'>
                                     <Button
-
+                                        onClick={handelAddFav}
                                         color="purple">
                                         Add to Favorite
                                     </Button>
