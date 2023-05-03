@@ -3,7 +3,7 @@ import React from 'react';
 const Blog = () => {
     return (
         <div>
-            <header className='mt-8 mb-4 bg-red-200'>
+            <header className='mt-8 mb-4 bg-red-200 '>
                 this is header part
             </header>
             <div className='bg-slate-100 p-2 mt-4 mb-4'>

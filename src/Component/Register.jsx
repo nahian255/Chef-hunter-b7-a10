@@ -11,14 +11,17 @@ const Register = () => {
     const [name, setName] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
+    console.log(error);
 
 
     const handleRegistration = (event) => {
         event.preventDefault();
-        // if (!/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/.test(password)) {
-        //     setError("password not valid need 8 char ");
-        //     return;
-        // }
+        setError('')
+
+        // validation
+        if (!/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/.test(password)) {
+            return setError('Password should be 6 characters')
+        };
         if ((name, email, password)) {
             registerUser(email, password)
                 .then((result) => {
@@ -27,15 +30,13 @@ const Register = () => {
                 .catch((err) => {
                     console.log(err.message);
                 });
-        } else {
-            console.log('field emty');
-        }
+        };
     };
 
     console.log(email, name, password, error);
     return (
         <div>
-            <h1>register page</h1>
+            <h1 className='text-2xl'>Registratio Now</h1>
             <form className="flex flex-col gap-4 w-2/5 mx-auto my-9 border border-sky-500 p-4">
                 <div>
                     <div className="mb-2 block">
@@ -79,7 +80,7 @@ const Register = () => {
                         required={true}
                     />
                 </div>
-                <p><small>{error}</small></p>
+                <p><small className='text-red-600'>{error}</small></p>
                 <div>
                     <div className="mb-2 block">
                         <Label

@@ -5,13 +5,12 @@ import { newContext } from '../Contex/Auth';
 
 const Login = () => {
     const { user, loginUser, loginWithGoogle, loginWithGithub } = useContext(newContext)
-    let navigate = useNavigate();
-    const location = useLocation();
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
-    // console.log(email, password);
+    const location = useLocation();
+    let navigate = useNavigate();
     let from = location.state?.comming?.pathname || "/";
 
     // Login function.....
@@ -34,11 +33,9 @@ const Login = () => {
         loginWithGoogle()
             .then((result) => {
                 const user = result.user;
-                // console.log(user);
-                navigate("/");
+                navigate(from, { replace: true });
             }).catch((error) => {
                 const errorMessage = error.message;
-                console.log(errorMessage);
             });
     };
 
@@ -48,7 +45,7 @@ const Login = () => {
             .then((result) => {
                 const user = result.user;
                 // console.log(user);
-                navigate("/");
+                navigate(from, { replace: true });
             }).catch((error) => {
                 const errorMessage = error.message;
                 console.log(errorMessage);
@@ -57,7 +54,6 @@ const Login = () => {
 
     return (
         <div>
-            <h1>login page</h1>
             <div >
                 <form className="flex flex-col gap-4 w-2/5 mx-auto my-9 border border-sky-500 p-4">
                     <div>
