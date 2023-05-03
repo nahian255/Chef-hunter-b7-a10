@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { newContext } from '../Contex/Auth';
+import { Avatar } from 'flowbite-react';
 
 const Nav = () => {
     const { user, logOut } = useContext(newContext)
@@ -25,51 +26,48 @@ const Nav = () => {
                     <div className=" w-full md:block md:w-auto" id="mobile-menu">
                         <ul className="flex flex-col mt-4 md:flex-row md:space-x-8 md:mt-0 md:text-lg md:font-medium">
                             <li>
-                                <Link
-                                    to="/"
-                                    className="block py-2 pr-4 pl-3  rounded md:bg-transparent  md:p-0 dark:"
-                                    aria-current="page"
+                                <NavLink
+                                    to='/'
+                                    className={({ isActive }) => (isActive ? ' text-blue-500' : 'text-black')}
                                 >
                                     Home
-                                </Link>
+                                </NavLink>
                             </li>
                             <li>
-                                <Link
+                                <NavLink
                                     to="/blog"
-                                    className="block py-2 pr-4 pl-3  border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:dark:hover: dark:hover:bg-gray-700 dark:hover: md:dark:hover:bg-transparent dark:border-gray-700"
+                                    className={({ isActive }) => (isActive ? ' text-blue-500' : 'text-black')}
                                 >
                                     Blog
-                                </Link>
+                                </NavLink>
                             </li>
-                            {
-                                user ? <li>
-                                    <button onClick={handleLogout}>Logout</button>
-                                </li>
-                                    :
-                                    <li>
-                                        <Link
-                                            to="/login"
-                                            className="block py-2 pr-4 pl-3  border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:dark:hover: dark:hover:bg-gray-700 dark:hover: md:dark:hover:bg-transparent dark:border-gray-700"
-                                        >
-                                            Login
-                                        </Link>
-                                    </li>
-                            }
-
-
-                            {/* <li>
-                                {user ? (
-                                    <button onClick={() => signOut(auth)}>Logout</button>
-                                ) : (
-                                    <Link
-                                        to="/login"
-                                        className="block py-2 pr-4 pl-3  hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:dark:hover: dark:hover:bg-gray-700 dark:hover: md:dark:hover:bg-transparent"
-                                    >
-                                        Login
-                                    </Link>
-                                )}
+                            <li>
+                                {
+                                    user
+                                        ?
+                                        <li>
+                                            <div className="flex flex-wrap gap-1  ">
+                                                <li> <button onClick={handleLogout}>Logout</button></li>
+                                                <Avatar
+                                                    className=''
+                                                    title={user.displayName}
+                                                    img={user.photoURL
+                                                    }
+                                                    rounded={true}
+                                                />
+                                            </div>
+                                        </li>
+                                        :
+                                        <li>
+                                            < NavLink
+                                                to="/login"
+                                                className={({ isActive }) => (isActive ? ' text-blue-500 my-2' : 'text-black')}
+                                            >
+                                                Login
+                                            </NavLink>
+                                        </li>
+                                }
                             </li>
-                            <li>{user?.email}</li> */}
                         </ul>
                     </div>
                 </div>

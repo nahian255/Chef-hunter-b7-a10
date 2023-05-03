@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import logo from '../assets/bannerimg.jpg'
 import ChefCard from './aboutChef/ChefCard';
-import { Carousel } from 'flowbite-react';
+import { Accordion, Carousel } from 'flowbite-react';
 
 const Home = () => {
     const [chefs, setChefs] = useState([])
@@ -20,7 +20,7 @@ const Home = () => {
             {/* banner part.......... */}
             <div
                 // style={{ backgroundImage: `url(${logo})` }}
-                className='lg:flex my-4  bg-rose-50 rounded-lg'>
+                className='lg:flex my-8  bg-rose-50 rounded-lg'>
                 <div className=' h-2/4 lg:h-full lg:w-6/12 text-center p-2 '>
                     <h1 className='text-4xl italic text-blue-600 my-6 lg:my-10'>Meet the Top Chef in Eupors</h1>
 
@@ -75,6 +75,49 @@ const Home = () => {
                         />
                     </Carousel>
                 </div>
+            </section>
+            {/* 2nd section */}
+            <section className='my-8'>
+                <h1 className='text-2xl italic mb-8'>Know most asking Question about chef and recipes</h1>
+                <Accordion collapseAll={true}>
+                    <Accordion.Panel>
+                        <Accordion.Title>
+                            What is important in chef?
+                        </Accordion.Title>
+                        <Accordion.Content>
+                            <p className="mb-2 text-gray-500 dark:text-gray-400">
+                                Passion: A great chef has to be passionate about food and cooking. They have to genuinely enjoy the whole process of procuring, preparing, cooking and serving food and have to be able to design menus too. Stamina: An essential quality of a true chef is stamina.
+
+                            </p>
+
+                        </Accordion.Content>
+                    </Accordion.Panel>
+                    <Accordion.Panel>
+                        <Accordion.Title>
+                            What are 3 things chefs do?
+                        </Accordion.Title>
+                        <Accordion.Content>
+                            <p className="mb-2 text-gray-500 dark:text-gray-400">
+                                FChefs and head cooks typically do the following:
+                                Check the freshness of food and ingredients.
+                                Supervise and coordinate activities of cooks and other food preparation workers.
+                                Develop recipes and determine how to present dishes.
+                                Plan menus and ensure the quality of meals.
+                            </p>
+
+                        </Accordion.Content>
+                    </Accordion.Panel>
+                    <Accordion.Panel>
+                        <Accordion.Title>
+                            What do chef wear?
+                        </Accordion.Title>
+                        <Accordion.Content>
+                            <p className="mb-2 text-gray-500 dark:text-gray-400">
+                                A traditional chef's uniform includes a tall, pleated, white hat known as a torque blanche, a double-breasted jacket made from a thick, white, cotton cloth, an apron, and pants - usually black and white in a houndstooth pattern.
+                            </p>
+                        </Accordion.Content>
+                    </Accordion.Panel>
+                </Accordion>
             </section>
         </div>
     );
