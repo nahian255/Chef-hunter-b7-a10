@@ -3,7 +3,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const ChefCard = ({ chef }) => {
-    console.log(chef);
+    // console.log(chef);
     const { name, id, img, Likes, recipes, experience } = chef
     return (
         <div>

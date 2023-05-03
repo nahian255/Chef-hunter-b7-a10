@@ -8,6 +8,7 @@ import Blog from "../Component/Blog";
 import Login from "../Component/Login";
 import Register from "../Component/Register";
 import ChefRecipes from "../Component/aboutChef/ChefRecipes";
+import Private from "../Private/Private";
 
 
 const router = createBrowserRouter([
@@ -33,63 +34,19 @@ const router = createBrowserRouter([
             },
             {
                 path: "/chef/:id",
-                element: <ChefRecipes></ChefRecipes>,
+                element: <Private><ChefRecipes></ChefRecipes></Private>,
                 loader: ({ params }) => fetch(`http://localhost:5000/chef/${params.id}`)
+            },
+            {
+                path: '*',
+                element: <div>
+                    <img className="w-1/2 " src="https://cdn.vectorstock.com/i/1000x1000/85/43/error-page-not-found-vector-27898543.webp" alt="" />
+                </div>
+
             }
 
         ]
-    },
-
-
-
-
-
-
-
-
-
-    // {
-    //     path: '/',
-    //     element: <Main />,
-    //     children: [
-    //         {
-    //             path: '/:id',
-    //             element: <Home></Home>,
-    //             loader: ({ params }) => fetch(`http://localhost:3000/post/${params.id}`)
-    //         }
-    //     ]
-    // },
-    // {
-    //     path: "/dashboard",
-    //     element: <DashBoardLayout />,
-    //     children: [
-    //         {
-    //             path: '/dashboard',
-    //             element: <Dashboard></Dashboard>
-    //         },
-    //         {
-
-    //             path: '/dashboard/products',
-    //             element: <AllProduct></AllProduct>
-    //         },
-    //         {
-
-    //             path: '/dashboard/add-product',
-    //             element: <AddProduct></AddProduct>
-    //         },
-    //     ]
-    // },
-    // {
-    //     path: "/catagory",
-    //     element: <MainCatagory></MainCatagory>,
-    //     children: [
-    //         {
-    //             path: "/catagory/using_id/:id",
-    //             element: <NewCatagory></NewCatagory>,
-    //             loader: ({ params }) => fetch(`http://localhost:3000/catagory/using_id/${params.id}`),
-    //         }
-    //     ]
-    // },
+    }
 ]);
 
 

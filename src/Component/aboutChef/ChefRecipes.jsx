@@ -6,7 +6,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const ChefRecipes = () => {
     const data = useLoaderData()
-    console.log(data);
+    // console.log(data);
     const { name, id, img, body, Likes, recipes, experience, recipe1, recipe1Ingredients, recipe1Method, recipe2, recipe2Ingredients, recipe2Method, recipe3, recipe3Ingredients, recipe3Method } = data;
 
     const handelAddFav = (event) => {

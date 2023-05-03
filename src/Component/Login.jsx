@@ -1,18 +1,18 @@
 import React, { useContext, useState } from 'react';
 import { Button, Checkbox, Label, TextInput } from "flowbite-react";
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { newContext } from '../Contex/Auth';
 
 const Login = () => {
     const { user, loginUser, loginWithGoogle, loginWithGithub } = useContext(newContext)
     let navigate = useNavigate();
-    // console.log(user);
+    const location = useLocation();
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
-    console.log(email, password);
-
+    // console.log(email, password);
+    let from = location.state?.comming?.pathname || "/";
 
     // Login function.....
     const handleLogin = (event) => {
@@ -21,7 +21,7 @@ const Login = () => {
             loginUser(email, password)
                 .then((result) => {
                     console.log(result.user);
-                    navigate("/");
+                    navigate(from, { replace: true });
                 })
                 .catch((error) => {
                     console.log(error.message);
@@ -34,7 +34,7 @@ const Login = () => {
         loginWithGoogle()
             .then((result) => {
                 const user = result.user;
-                console.log(user);
+                // console.log(user);
                 navigate("/");
             }).catch((error) => {
                 const errorMessage = error.message;
@@ -47,7 +47,7 @@ const Login = () => {
         loginWithGithub()
             .then((result) => {
                 const user = result.user;
-                console.log(user);
+                // console.log(user);
                 navigate("/");
             }).catch((error) => {
                 const errorMessage = error.message;

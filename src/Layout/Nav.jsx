@@ -4,7 +4,7 @@ import { newContext } from '../Contex/Auth';
 
 const Nav = () => {
     const { user, logOut } = useContext(newContext)
-    console.log(user);
+    // console.log(user);
     const handleLogout = () => {
         logOut()
             .then()
@@ -18,10 +18,9 @@ const Nav = () => {
 
             <div>
                 <div className="container flex flex-wrap justify-between items-center mx-auto">
-                    <a href="/" className="flex items-center">
-                        {/* {navbarLogo} */}
-                        website name here
-                    </a>
+                    <Link to="/" className="flex items-center text-2xl ">
+                        <span className='text-red-700'>Chef</span>Hub
+                    </Link>
 
                     <div className=" w-full md:block md:w-auto" id="mobile-menu">
                         <ul className="flex flex-col mt-4 md:flex-row md:space-x-8 md:mt-0 md:text-lg md:font-medium">
