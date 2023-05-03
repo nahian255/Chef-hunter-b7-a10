@@ -6,7 +6,7 @@ const Foooter = () => {
         <div className=' my-16'>
 
             <Footer
-                className='h-40 bg-blue-300'
+                className='h-40 bg-blue-400'
                 container={true}>
                 <Footer.Copyright
                     href="#"
