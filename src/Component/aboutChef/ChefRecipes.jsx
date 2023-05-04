@@ -1,6 +1,8 @@
 
 import React, { useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
+import LazyLoad from 'react-lazy-load';
+
 
 import RecipeItem from './RecipeItem';
 
@@ -8,7 +10,7 @@ const ChefRecipes = () => {
     const data = useLoaderData()
     console.log(data);
 
-    const { name, id, img, body, Likes, recipes, experience, recipe1, recipe1Ingredients, recipe1Method, recipe2, recipe2Ingredients, recipe2Method, recipe3, recipe3Ingredients, recipe3Method } = data;
+    const { name, id, img, body, Likes } = data;
 
     const recepiData = data.recipe
     console.log(recepiData);
@@ -17,7 +19,6 @@ const ChefRecipes = () => {
         <>
             {/* chef information */}
             <div
-                // style={{ backgroundImage: `url(${logo})` }}
                 className='lg:flex my-4  bg-rose-100 rounded-lg'>
                 <div className=' h-2/4 lg:h-full lg:w-6/12 text-center p-2 '>
                     <h1 className='text-6xl italic text-blue-600 my-6 lg:my-10'>{name}</h1>
@@ -27,8 +28,9 @@ const ChefRecipes = () => {
                     <p className='text-left p-4'>Likes: {Likes}</p>
                 </div>
                 <div className='bg-red-300 h-2/4 lg:h-full  lg:w-6/12'>
-
-                    <img src={img} alt="" />
+                    <LazyLoad height={400} offset={300} >
+                        <img src={img} alt="" />
+                    </LazyLoad>
                 </div>
             </div>
             {/* recipies item........... */}

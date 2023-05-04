@@ -9,7 +9,7 @@ const Home = () => {
 
 
     useEffect(() => {
-        fetch('http://localhost:5000/')
+        fetch('https://server-nahian255.vercel.app/')
             .then(res => res.json())
             .then(data => setChefs(data))
             .catch(err => setError(err))
@@ -38,7 +38,7 @@ const Home = () => {
             {/* Card part............ */}
             <section className=' my-16'>
                 <h1 className='text-2xl lg:text-4xl my-4 italic' > Top 6 Chef in this regiouns.</h1>
-                <div className='flex justify-evenly flex-wrap my-4 gap-8'>
+                <div className='flex justify-evenly flex-wrap my-4 h-full gap-8'>
                     {
                         chefs.map(chef => <ChefCard
                             key={chef.id}
