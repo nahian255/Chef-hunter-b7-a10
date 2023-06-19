@@ -9,7 +9,7 @@ const Home = () => {
 
 
     useEffect(() => {
-        fetch('https://server-nahian255.vercel.app/')
+        fetch('https://server-taupe-three.vercel.app/') // https://server-taupe-three.vercel.app/
             .then(res => res.json())
             .then(data => setChefs(data))
             .catch(err => setError(err))
